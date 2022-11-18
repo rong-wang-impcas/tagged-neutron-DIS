@@ -5,7 +5,7 @@ Event generator for leading neutron tagged DIS process, which is useful for cons
 
 Using ROOT to execute the codes:
 
->root -l test.cpp
+>root -l -q test.cpp
 
 
 
