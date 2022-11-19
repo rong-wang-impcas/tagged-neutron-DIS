@@ -7,7 +7,7 @@
 #include"piIMParton.cpp"
 
 
-void test(){
+int test(){
 
 	TaggedN_DIS dis;
 
@@ -28,6 +28,7 @@ void test(){
 
 	dis.Generate(20000);
 
+	return 0;
 }
 
 
