@@ -158,7 +158,7 @@ void TaggedN_DIS::MakeROOTFile(char *filename){
 	//// create the output file and the output TTree
 	cout<<"    Creating the output file: "<<filename<<endl;
 	fout = new TFile(filename,"recreate");
-	tree = new TTree("tree","TaggedDIS - RW");
+	tree = new TTree("tree","TaggedDIS");
 	tree->Branch("xB", &xB, "xB/D");
 	tree->Branch("Q2", &Q2, "Q2/D");
 	tree->Branch("xL", &xL, "xL/D");
@@ -169,8 +169,8 @@ void TaggedN_DIS::MakeROOTFile(char *filename){
 	tree->Branch("MX2", &MX2, "MX2/D");
 	tree->Branch("s", &s, "s/D");
 	tree->Branch("d4sigma", &d4sigma, "d4sigma/D");
-	tree->Branch("elec_out", elec_out, 32000, 0);
-	tree->Branch("neut_out", neut_out, 32000, 0);
+	tree->Branch("elec_out", "TLorentzVector", elec_out);
+	tree->Branch("neut_out", "TLorentzVector", neut_out);
 }
 void TaggedN_DIS::SetOutputFileName(char *filename){
 	strcpy(strFileName, filename);
