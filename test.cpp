@@ -23,8 +23,8 @@ int test(){
 
 	dis.SetElecBeamEnergy(3.5);
 	dis.SetProtBeamEnergy(20);
-	//dis.SetBeamCrossAngle(0.05);  //// 50 mrad
-	dis.SetBeamCrossAngle(0);  //// 0 mrad
+	dis.SetBeamCrossAngle(0.05);  //// 50 mrad
+	//dis.SetBeamCrossAngle(0);  //// 0 mrad
 
 	dis.Generate(20000);
 

@@ -83,6 +83,9 @@ int TaggedN_DIS::Generate(int N = 20000){
 	MakeROOTFile(strFileName);
 
 	cout<<"    To generate "<<N<<" events..."<<endl;
+	TVector3 zdirection = eBeam->Vect();
+	TVector3 ydirection(0, 1, 0);
+	TVector3 xdirection(zdirection.Z(), 0, -zdirection.X());
 
 	for(int i=0; i<N; ){
 		xB = random->Uniform(xBmin, xBmax);
@@ -115,7 +118,10 @@ int TaggedN_DIS::Generate(int N = 20000){
 		double sinetheta = sqrt(1 - cosetheta*cosetheta);
 		double ephi = random->Uniform(0, 2*PI);
 		double emom = sqrt(eOutE*eOutE - me*me);
-		elec_out->SetXYZT(emom*sinetheta*cos(ephi), emom*sinetheta*sin(ephi), emom*cosetheta, eOutE);
+		TVector3 emom_v3 = emom*sinetheta*cos(ephi) * xdirection.Unit();
+		emom_v3 += emom*sinetheta*sin(ephi) * ydirection.Unit();
+		emom_v3 += emom*cosetheta * zdirection.Unit();
+		elec_out->SetXYZT(emom_v3.X(), emom_v3.Y(), emom_v3.Z(), eOutE);
 
 		double neutE = (2*mN*mN-t) / 2.0 / mN;
 		double nphi = random->Uniform(0, 2*PI);
