@@ -18,8 +18,9 @@ int test(){
 	dis.SetxLmax(0.995);
 	dis.SetxLmin(0.5);
 
-	char filename[50] = "TaggedNeutron-DIS-EicC.root";
-	dis.SetOutputFileName(filename); 
+	//char filename[50] = "TaggedNeutron-DIS-EicC.root";
+	TString filename = "TaggedNeutron-DIS-EicC.root";
+	dis.SetOutputFileName("TaggedNeutron-DIS-EicC.root"); 
 
 	dis.SetElecBeamEnergy(3.5);
 	dis.SetProtBeamEnergy(20);

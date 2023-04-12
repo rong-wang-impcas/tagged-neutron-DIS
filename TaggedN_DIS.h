@@ -6,6 +6,7 @@
 #include"TTree.h"
 #include"TLorentzVector.h"
 #include"TVector3.h"
+#include"TString.h"
 
 #include"KineCal.h"
 
@@ -22,6 +23,7 @@ class TaggedN_DIS{
 		int Generate(int N);
 
 		void SetOutputFileName(char *filename);
+		void SetOutputFileName(TString filename);
 
 		//// GRV's pionic PDF model, published in the year of 1992.
 		double xuv_pi_GRV(double xpi, double Q2);

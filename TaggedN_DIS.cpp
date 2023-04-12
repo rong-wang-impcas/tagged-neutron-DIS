@@ -189,6 +189,9 @@ void TaggedN_DIS::MakeROOTFile(char *filename){
 void TaggedN_DIS::SetOutputFileName(char *filename){
 	strcpy(strFileName, filename);
 }
+void TaggedN_DIS::SetOutputFileName(TString filename){
+	strcpy(strFileName, filename.Data());
+}
 
 void TaggedN_DIS::SetElecBeamEnergy(double ebeamenergy){
 	if(ebeamenergy<0.001){cout<<"Error: electron beam energy is too small!!!"<<endl; return;}
