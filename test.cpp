@@ -22,12 +22,14 @@ int test(){
 	TString filename = "TaggedNeutron-DIS-EicC.root";
 	dis.SetOutputFileName("TaggedNeutron-DIS-EicC.root"); 
 
+
 	dis.SetElecBeamEnergy(3.5);
 	dis.SetProtBeamEnergy(20);
 	dis.SetBeamCrossAngle(0.05);  //// 50 mrad
 	//dis.SetBeamCrossAngle(0);  //// 0 mrad
 
-	dis.Generate(20000);
+	dis.SetSamplingMode(1);
+	dis.Generate(100000);
 
 	return 0;
 }

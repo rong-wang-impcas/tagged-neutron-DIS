@@ -28,6 +28,10 @@ TaggedN_DIS::TaggedN_DIS(){
 	ymax = 0.99;
 	Tmin = 0.01;
 	Tmax = 50;
+
+	sampling_flag = 0;
+	max_d4sigma = 2200;
+
 	//// nucleon mass and electron mass
 	mN = 0.938272;
 	mpi = 0.14;
@@ -150,9 +154,11 @@ int TaggedN_DIS::Generate(int N = 20000){
 		elec_out->Boost(*BoostToEIC);
 		neut_out->Boost(*BoostToEIC);
 
-
+		if(sampling_flag)
+			if(d4sigma < random->Uniform(0,max_d4sigma))continue;
 		tree->Fill();
 		i++;
+		if(i%1000==0)cout<<i<<" events"<<endl;
 	}
 
 
@@ -310,4 +316,7 @@ void TaggedN_DIS::SetTmax(double max){Tmax = max;}
 void TaggedN_DIS::Setymin(double min){ymin = min;}
 void TaggedN_DIS::Setymax(double max){ymax = max;}
 
-
+int TaggedN_DIS::SetSamplingMode(int flag){
+	sampling_flag = flag;
+	return sampling_flag;
+}

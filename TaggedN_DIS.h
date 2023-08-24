@@ -45,6 +45,7 @@ class TaggedN_DIS{
 		void SetTmax(double max);
 		void Setymin(double min);
 		void Setymax(double max);
+		int SetSamplingMode(int flag);
 
 		//// set beam energies and crossing angle
 		void SetElecBeamEnergy(double ebeamenergy);		
@@ -54,6 +55,9 @@ class TaggedN_DIS{
 
 
 	private:
+		int sampling_flag;
+		double max_d4sigma;
+
 		double me;
 		double mpi;
 		double mN;
