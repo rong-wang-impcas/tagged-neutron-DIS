@@ -30,6 +30,7 @@ TaggedN_DIS::TaggedN_DIS(){
 	Tmax = 50;
 
 	sampling_flag = 0;
+	quiet_flag = 0;
 	max_d4sigma = 2200;
 
 	//// nucleon mass and electron mass
@@ -158,7 +159,7 @@ int TaggedN_DIS::Generate(int N = 20000){
 			if(d4sigma < random->Uniform(0,max_d4sigma))continue;
 		tree->Fill();
 		i++;
-		if(i%1000==0)cout<<i<<" events"<<endl;
+		if(!quiet_flag) if(i%1000==0) cout<<i<<" events"<<endl;
 	}
 
 
@@ -320,3 +321,4 @@ int TaggedN_DIS::SetSamplingMode(int flag){
 	sampling_flag = flag;
 	return sampling_flag;
 }
+int TaggedN_DIS::SetQuiet(int flag){quiet_flag = flag; return quiet_flag;}
